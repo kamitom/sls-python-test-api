@@ -61,8 +61,16 @@ provider:
 functions:
   hellofunc:
     handler: handler.hellofunc
+    events:
+      - http:
+          path: hellof
+          method: get
+          cors: true
+          private: false
   reqFunc:
     handler: httprequest.reqFunc
+    events:
+      - schedule: rate(240 minutes)
 
 custom:
   stage: ${opt:stage, self:provider.stage}
