@@ -1,10 +1,18 @@
 import json
+from faker import Faker
 
 
 def hellofunc(event, context):
+
+    # fakeTest = Faker("zh_TW")
+    fakeTest = Faker(['it_IT', 'en_US', 'ja_JP', 'zh_TW'])
+
+    # japanDramaRoleName = "生田斗真"
+    japanDramaRoleName = fakeTest.name()
+
     body = {
-        "message": "hi there!",
-        "input": event
+        "message": "hi, " + japanDramaRoleName,
+        # "input": event
     }
 
     response = {
